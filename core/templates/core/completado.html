@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-12 text-center mt-3 mb-2">
+        <h3>Completados</h3>
+    </div>  
+    <div class="col-12">
+        <div class="table-responsive table-bordered">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th width="30">Boleta</th>
+                        <th width="30" class="text-center">Cantidad</th>
+                        <th>Producto</th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dato in datos.itertuples  %}
+                    <tr> 
+                            {% ifchanged dato.id %}
+                            <td class="text-right">{{ dato.boleta }}</td>
+                            {% else %}
+                            <td></td>
+                            {% endifchanged  %}
+                            <td class="text-right">{{ dato.Cantidad }}</td>
+                            <td>{{ dato.Producto }}</td>   
+                                           
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="col-12 text-center mt-3 mb-2">
+        <a class="btn btn-default  btn-rounded " href="{% url 'home' %}">Inicio</a>
+        
+    </div>
+{% endblock %}
